@@ -1,0 +1,36 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.0.0'
+        classpath 'com.github.dcendents:android-maven-plugin:1.2'
+    }
+}
+
+apply plugin: 'com.android.library'
+
+['deploy', 'idea', 'eclipse'].each { g ->
+    if (file("${g}.gradle").exists()) {
+        apply from: "${g}.gradle"
+    }
+}
+
+group = 'at.technikum.mti'
+version = '1.0.0'
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.1.2"
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 21
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
