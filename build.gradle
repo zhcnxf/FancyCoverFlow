@@ -10,10 +10,8 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
-['deploy', 'idea', 'eclipse'].each { g ->
-    if (file("${g}.gradle").exists()) {
-        apply from: "${g}.gradle"
-    }
+file('gradle.d').list().each {
+    it ==~ /.+\.gradle/ && apply(from: "gradle.d/$it")
 }
 
 group = 'at.technikum.mti'
