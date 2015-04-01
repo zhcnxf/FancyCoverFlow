@@ -5,6 +5,7 @@ target
 .gradle
 build
 gradle.properties
+local.properties
 
 # idea
 .idea
